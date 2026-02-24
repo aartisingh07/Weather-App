@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USD to INR Converter</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin: 50px;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: #333;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            animation: fadeIn 1s ease-in-out;
+        }
+        input {
+            padding: 12px;
+            margin: 10px;
+            font-size: 18px;
+            border: 2px solid #ff758c;
+            border-radius: 5px;
+            outline: none;
+        }
+        button {
+            padding: 12px 20px;
+            font-size: 18px;
+            background: #ff758c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #e84393;
+        }
+        h3 {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #ff758c;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .toast-notification {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        min-width: 260px;
+        max-width: 320px;
+        padding: 14px 18px;
+        border-radius: 8px;
+        color: #fff;
+        font-size: 15px;
+        font-weight: 500;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.4s ease;
+        z-index: 9999;
+    }
+
+    /* Visible state */
+    .toast-notification.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Error toast */
+    .toast-notification.error {
+        background: linear-gradient(135deg, #e53935, #d32f2f);
+    }
+
+    /* Success toast */
+    .toast-notification.success {
+        background: linear-gradient(135deg, #43a047, #2e7d32);
+    }
+
+    /* Optional warning */
+    .toast-notification.warning {
+        background: linear-gradient(135deg, #f9a825, #f57f17);
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>💰 USD to INR Converter 💰</h2>
+        <input type="text" id="usdAmount" placeholder="Enter USD Amount">
+        <button onclick="getMoney()">Convert</button>
+        <h3 id="result"></h3>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="./conversion.js">
+       //"https://api.exchangerate-api.com/v4/latest/USD"
+    </script>
+</body>
+</html>
