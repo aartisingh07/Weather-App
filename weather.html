@@ -200,7 +200,7 @@
     }
     .btn-group{
         display:grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2,1fr);
         gap:12px;
         margin-top:15px;
     }
@@ -291,6 +291,7 @@
         <div class="btn-group">
             <button onclick="checkCity()">Search</button>
             <button onclick="getLocationWeather()">📍 My Location</button>
+            <button onclick="startVoiceSearch()">🎤 Voice</button>
             <button onclick="clearWeather()">✖ Clear</button>
         </div>
         <div id="weather"></div>

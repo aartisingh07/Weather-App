@@ -224,3 +224,37 @@ function changeBackground(condition, icon) {
             "linear-gradient(135deg, #7a4bff, #9f56ff)";
     }
 }
+
+function startVoiceSearch() {
+
+    const SpeechRecognition =
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+        showToast("Voice search not supported", "error");
+        return;
+    }
+
+    const recognition = new SpeechRecognition();
+
+    recognition.lang = "en-US";
+    recognition.start();
+
+    showToast("Listening...", "info", 1500);
+
+    recognition.onresult = function(event) {
+
+        const city = event.results[0][0].transcript;
+
+        document.getElementById("city").value = city;
+
+        showToast(`Searching ${city}`, "success", 1200);
+
+        fetchWeather(city);
+    };
+
+    recognition.onerror = function() {
+        showToast("Voice search failed", "error");
+    };
+}
