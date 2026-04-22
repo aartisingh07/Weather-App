@@ -63,11 +63,12 @@ async function fetchWeather(city) {
 // ==========================
 function showWeather(data) {
     let weatherbox = document.getElementById("weather");
-
+    let cityTime = getCityTime(data.timezone);
     let { name, sys, main, weather, wind } = data;
 
     weatherbox.innerHTML = `
         <h2>${name}, ${sys.country}</h2>
+        <p class="city-time">🕒 ${cityTime}</p>
         <img src="https://openweathermap.org/img/wn/${weather[0].icon}@2x.png" class="weather-icon">
         <p>🌡 Temperature: ${main.temp}°C</p>
         <p>💧 Humidity: ${main.humidity}%</p>
@@ -86,6 +87,16 @@ document.getElementById("city").addEventListener("keydown", (e) => {
         checkCity();
     }
 });
+
+function getCityTime(offsetSeconds) {
+    let utc = new Date().getTime() + (new Date().getTimezoneOffset() * 60000);
+    let cityDate = new Date(utc + (offsetSeconds * 1000));
+
+    return cityDate.toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+}
 
 // ==========================
 // Current Location Weather
