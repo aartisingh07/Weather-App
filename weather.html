@@ -76,7 +76,6 @@
             margin: 10px 0;
             outline: none;
             border: 1px solid #ddd;
-            transition: transform 0.2s;
         }
         button{
             width: 50%;
@@ -86,13 +85,15 @@
             border-color: #9f56ff;
         }
 
-        button {
+        button{
             background: linear-gradient(135deg, #9f56ff, #7a4bff);
             color: white;
             cursor: pointer;
             border: none;
-            transition: background 0.3s, transform 0.2s;
-            animation: pulseButton 1.5s infinite alternate;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 18px;
+            transition: background 0.25s ease, transform 0.2s ease;
         }
 
         @keyframes pulseButton {
@@ -142,10 +143,10 @@
             }
         }
 
-        .weather-icon {
+        .weather-icon{
             width: 120px;
-            margin-top: 20px;
-            animation: bounceIcon 2s ease-in-out infinite;
+            margin: 20px 0;
+            filter: drop-shadow(0 0 8px rgba(255,255,255,0.6));
         }
 
         @keyframes bounceIcon {
@@ -197,21 +198,112 @@
     .toast-notification.warning {
         background: linear-gradient(135deg, #f9a825, #f57f17);
     }
+    .btn-group{
+        display:grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap:12px;
+        margin-top:15px;
+    }
+
+    .btn-group button{
+        flex:1;
+        width:auto;
+    }
+
+    .history-section{
+        margin-top:20px;
+    }
+
+    #history{
+        display:flex;
+        gap:10px;
+        flex-wrap:wrap;
+        justify-content:center;
+        margin-top:10px;
+    }
+
+    .history-btn{
+        padding:8px 14px;
+        border:none;
+        border-radius:20px;
+        background:#ffffff22;
+        color:white;
+        cursor:pointer;
+        transition:0.3s;
+    }
+
+    .history-btn:hover{
+        background:#ffffff44;
+    }
+
+    #weather{
+        margin-top:25px;
+    }
+
+    #weather h2{
+        margin-bottom:10px;
+    }
+
+    @media(max-width:600px){
+        .container{
+            width:90%;
+            max-width:95%;
+            padding:25px 18px;
+        }
+        .btn-group{
+            grid-template-columns:1fr;
+        }
+        .btn-group button{width:100%;}
+        input{width:90%;}
+        button{width:90%;}
+    }
+    .history-top{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:10px;
+    }
+
+    .clear-history-btn{
+        width: auto !important;
+        min-width: auto;
+        padding: 4px 8px;
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 26px;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: 0.3s ease;
+    }
+
+    .clear-history-btn:hover{
+        background: rgba(255,255,255,0.12);
+        transform: scale(1.1);
+    }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>Weather App</h1>
-        <input type="text" id="city" placeholder="Enter city name" />
-        <button id="getWeatherBtn" onclick="checkCity()">Get Weather</button>
+        <h1>🌤 Weather App</h1>
+        <input type="text" id="city" placeholder="Enter city name">
+        <div class="btn-group">
+            <button onclick="checkCity()">Search</button>
+            <button onclick="getLocationWeather()">📍 My Location</button>
+            <button onclick="clearWeather()">✖ Clear</button>
+        </div>
         <div id="weather"></div>
+        <div class="history-section" id="historySection">
+            <div class="history-top">
+                <h3>Recent Searches</h3>
+                <button class="clear-history-btn" onclick="clearHistory()">🗑️</button>
+            </div>
+            <div id="history"></div>
+        </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-	<script src="./weather.js">
-					//`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=6ed570ac911dad2a255e2965a53ced74&units=metric`
-	</script>
-    
 
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+	<script src="./weather.js">//`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=6ed570ac911dad2a255e2965a53ced74&units=metric`</script>
 </body>
 </html>
