@@ -54,10 +54,15 @@ This project goes beyond a basic weather app by offering a polished user experie
 
 ---
 
+
 ```md
 ## 📸 Screenshots
 
+### 🏠 Home Screen
+
 ![Home Screen](image.png)
+
+### 🌤️ Weather Result
 
 ![Weather Result](weather.png)
 ```
