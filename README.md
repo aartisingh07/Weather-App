@@ -55,7 +55,6 @@ This project goes beyond a basic weather app by offering a polished user experie
 ---
 
 
-```md
 ## 📸 Screenshots
 
 ### 🏠 Home Screen
@@ -65,7 +64,6 @@ This project goes beyond a basic weather app by offering a polished user experie
 ### 🌤️ Weather Result
 
 ![Weather Result](weather.png)
-```
 
 ---
 
